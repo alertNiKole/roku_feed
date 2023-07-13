@@ -29,7 +29,7 @@ module.exports = async (req, res) => {
         language: 'en',
         series: [
           {
-            id: 'MDL_Meta_Mind_Shift_Bonus',
+            id: 'MDL_Meta_Mind_Shift',
             title: 'Meta Mind Shift Show',
             seasons: [
               {
