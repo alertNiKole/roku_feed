@@ -6,8 +6,8 @@ const fs = require('fs');
 const xml2js = require('xml2js');
 const moment = require('moment');
 
-app.get('/roku-feed', async (req, res) => {
-  const data = fs.readFileSync('path_to_your_podcast_feed.xml');
+module.exports = async (req, res) => {
+  const data = fs.readFileSync('podcast-rss.xml');
   const result = await xml2js.parseStringPromise(data);
 
   // Transformed data object
@@ -42,9 +42,10 @@ app.get('/roku-feed', async (req, res) => {
     ]
   }
 
-  res.type('application/json');
-  res.send(transformedData);
-});
+  res.status(200);
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(transformedData));
+};
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`)
